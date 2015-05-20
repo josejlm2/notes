@@ -1,5 +1,5 @@
 #General Security Principles
-Awarness + Protection = Security
+Awareness + Protection = Security
 
 1. Least privilege
   * User privileges should be limited to their own type of data
@@ -32,3 +32,26 @@ Awarness + Protection = Security
 8. Map exposure point and data passageway
   * Think about the incoming data through urls, forms, cookies, and sessions
   * Think about the outcoming data html or js
+  * 
+  
+
+#PHP
+
+### Registered Globals 
+  Always initialize global variables yourself. For example, take a look at the following code. 
+```
+  <?php
+    if (check_password($username, $password)){
+      $logged_in = true;
+    }
+    
+    if($logged_in){
+      // display the page
+    }
+   ?>
+```
+You can easily bypass the login by typing in the url bar `http:somesite.com?logged_in = true`. Since we never created the logged_in variable and set it to false, any one can just assign it to true and log in. 
+  
+  
+  
+  
