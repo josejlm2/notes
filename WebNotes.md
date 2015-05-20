@@ -37,8 +37,8 @@ Awareness + Protection = Security
 
 #PHP
 
-### Registered Globals 
-  Always initialize global variables yourself. For example, take a look at the following code. 
+### Configure Registered Globals(Turned off by default in PHP 4.2 and later)
+  The standard is to have it off `register_globals = Off`. Otherwise, always initialize global variables yourself. For example, take a look at the following code. 
 ```
   <?php
     if (check_password($username, $password)){
@@ -51,6 +51,25 @@ Awareness + Protection = Security
    ?>
 ```
 You can easily bypass the login by typing in the url bar `http:somesite.com?logged_in = true`. Since we never created the logged_in variable and set it to false, any one can just assign it to true and log in. 
+
+
+###Using Superglobals(the standard)
+```
+$_GET['page']
+$_PUT['page']
+$_COOKIE['page']
+$_SESSION['page']
+
+Example:
+
+http://somesite.com?page=1&query=hello
+<?php echo $_GET['page'] ?>
+<?php echo $_GET['query'] ?>
+
+
+```
+ 
+
   
   
   
